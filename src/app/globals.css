@@ -1,26 +1,80 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: #5D4432;
+  --color-secondary: #E9E3DD;
+  --color-success: #16A34A;
+  --color-warning: #D97706;
+  --color-danger: #DC2626;
+  --color-surface: #F9F7F5;
+  --color-text: #3E2B1E;
+  
+  --font-sans: var(--font-poppins);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --background: #F9F7F5; /* surface */
+  --foreground: #3E2B1E; /* text */
+  --cafe-border: rgba(93, 68, 50, 0.1);
+  --cafe-shadow: 0 4px 20px rgba(93, 68, 50, 0.05);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--color-primary);
+}
+
+/* Custom Scrollbar for Cafe feel */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: #D4C9C1;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B8A99A;
+}
+
+/* Cafe UI utility */
+.cafe-card {
+  background: #FFFFFF;
+  border: 1px solid var(--cafe-border);
+  box-shadow: var(--cafe-shadow);
+  border-radius: 16px;
+}
+
+.cafe-card-interactive {
+  background: #FFFFFF;
+  border: 1px solid var(--cafe-border);
+  box-shadow: var(--cafe-shadow);
+  border-radius: 16px;
+  transition: all 0.2s ease-in-out;
+}
+
+.cafe-card-interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(93, 68, 50, 0.08);
+  border-color: rgba(93, 68, 50, 0.2);
+}
+
+/* Base button animations */
+button, a {
+  -webkit-tap-highlight-color: transparent;
 }
