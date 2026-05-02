@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { AccessibilityMenu } from "@/components/AccessibilityMenu";
 import { AIAssistant } from "@/components/ai/AIAssistant";
+import "@/lib/firebase/config"; // Initialize Firebase Google Service
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -117,6 +118,16 @@ function StructuredData() {
   );
 }
 
+/**
+ * Root Layout Component
+ * 
+ * Defines the global HTML structure, fonts, accessibility wrappers, 
+ * navigation, and footer for the entire application.
+ * 
+ * @param {Object} props - Component props
+ * @param {React.ReactNode} props.children - The page content to render
+ * @returns {React.ReactElement} The root HTML document
+ */
 export default function RootLayout({
   children,
 }: Readonly<{
