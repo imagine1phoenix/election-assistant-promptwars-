@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { AccessibilityMenu } from "@/components/AccessibilityMenu";
+import { AIAssistant } from "@/components/ai/AIAssistant";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -148,6 +149,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <AccessibilityMenu />
+        <AIAssistant />
       </body>
     </html>
   );
