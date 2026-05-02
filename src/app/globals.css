@@ -18,6 +18,36 @@
   --foreground: #3E2B1E; /* text */
   --cafe-border: rgba(93, 68, 50, 0.1);
   --cafe-shadow: 0 4px 20px rgba(93, 68, 50, 0.05);
+
+  /* Semantic colors - Cafe themed */
+  --success: #2D5016;
+  --success-light: #E8F5E0;
+  --warning-dark: #8B5E00;
+  --warning-light: #FFF4E0;
+  --error: #7D2F2F;
+  --error-light: #FDEAEA;
+  --info: #2F4858;
+  --info-light: #E3F2FD;
+
+  /* Indian flag inspiration */
+  --india-saffron: #FF9933;
+  --india-white: #FFFFFF;
+  --india-green: #138808;
+  --india-blue: #000080;
+
+  /* Accessibility */
+  --font-scale: 1;
+}
+
+/* High contrast mode */
+.high-contrast {
+  --background: #FFFFFF;
+  --foreground: #000000;
+  --cafe-border: rgba(0, 0, 0, 0.3);
+  --cafe-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  --color-primary: #3A2210;
+  --color-secondary: #D4C8BB;
+  --color-surface: #F0F0F0;
 }
 
 body {
@@ -27,6 +57,7 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: calc(1rem * var(--font-scale));
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -34,6 +65,30 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
   letter-spacing: -0.01em;
   color: var(--color-primary);
+}
+
+/* Focus visible indicators for keyboard accessibility */
+*:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Reduced motion class toggle */
+.reduce-motion *, .reduce-motion *::before, .reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
 }
 
 /* Custom Scrollbar for Cafe feel */
@@ -74,7 +129,74 @@ h1, h2, h3, h4, h5, h6 {
   border-color: rgba(93, 68, 50, 0.2);
 }
 
+/* Semantic alert styles */
+.alert-success {
+  background: var(--success-light);
+  border-left: 4px solid var(--success);
+  color: var(--success);
+}
+
+.alert-warning {
+  background: var(--warning-light);
+  border-left: 4px solid var(--warning-dark);
+  color: var(--warning-dark);
+}
+
+.alert-error {
+  background: var(--error-light);
+  border-left: 4px solid var(--error);
+  color: var(--error);
+}
+
+.alert-info {
+  background: var(--info-light);
+  border-left: 4px solid var(--info);
+  color: var(--info);
+}
+
+/* India tricolor decorative stripe */
+.india-stripe {
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    var(--india-saffron) 0%,
+    var(--india-saffron) 33%,
+    var(--india-white) 33%,
+    var(--india-white) 66%,
+    var(--india-green) 66%,
+    var(--india-green) 100%
+  );
+}
+
+/* Skip to content link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 24px;
+  background: var(--color-primary);
+  color: white;
+  border-radius: 0 0 8px 8px;
+  z-index: 9999;
+  font-weight: 600;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
 /* Base button animations */
 button, a {
   -webkit-tap-highlight-color: transparent;
+}
+
+/* Hide scrollbar utility */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
 }
