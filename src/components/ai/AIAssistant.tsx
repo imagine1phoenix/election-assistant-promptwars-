@@ -4,10 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageSquare, X, Send, Sparkles, Mic } from "lucide-react";
 
-import { GoogleGenerativeAI } from "@google/generative-ai";
-
-// Initialize Gemini (using a dummy key fallback for client-side evaluation if not set)
-const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_API_KEY || "AIzaSyDummyKeyForEvaluationPurposesOnly");
+// Chatbot client logic
 
 /**
  * AIAssistant Component
@@ -42,25 +39,25 @@ export function AIAssistant() {
     setIsTyping(true);
 
     try {
-      // In a real production app, this should go through a Next.js API route to protect the key
-      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-      
-      const prompt = `You are a helpful Democracy Assistant for Indian voters. Answer the following query concisely and clearly: ${text}`;
-      
-      // Fallback logic in case the dummy key fails during live evaluation
-      let responseText = "";
-      try {
-        const result = await model.generateContent(prompt);
-        responseText = result.response.text();
-      } catch (err) {
-        responseText = `I understand you're asking about "${text}". (Note: Please configure NEXT_PUBLIC_GEMINI_API_KEY in your .env file to get real Google Gemini responses.)`;
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ message: text }),
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to fetch from Google API");
       }
+
+      const data = await res.json();
       
       setMessages((prev) => [
         ...prev,
         {
           role: "ai",
-          text: responseText,
+          text: data.response || "Sorry, I couldn't process that.",
         },
       ]);
     } catch (error) {
@@ -68,7 +65,7 @@ export function AIAssistant() {
         ...prev,
         {
           role: "ai",
-          text: "I encountered an error connecting to the AI service. Please try again later.",
+          text: "I encountered an error connecting to the Google AI service. Please try again later.",
         },
       ]);
     } finally {
