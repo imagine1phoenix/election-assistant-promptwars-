@@ -12,7 +12,6 @@ import {
   Sparkles,
   ExternalLink,
 } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { ElectionCountdown } from "@/components/ui/ElectionCountdown";
 import { ConstituencyFinder } from "@/components/ui/ConstituencyFinder";
 import { ShareButtons } from "@/components/ui/ShareButtons";

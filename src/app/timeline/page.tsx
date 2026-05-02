@@ -43,6 +43,9 @@ export default function TimelinePage() {
                 <div className="flex-1 pb-2">
                   <button
                     onClick={() => setExpandedPhase(expandedPhase === i ? null : i)}
+                    aria-expanded={expandedPhase === i}
+                    aria-controls={`timeline-phase-${i}`}
+                    id={`timeline-btn-${i}`}
                     className="w-full text-left cafe-card-interactive p-5 group"
                   >
                     <div className="flex items-center justify-between">
@@ -68,7 +71,7 @@ export default function TimelinePage() {
                         transition={{ duration: 0.3 }}
                         className="overflow-hidden"
                       >
-                        <div className="mt-3 cafe-card p-6">
+                        <div id={`timeline-phase-${i}`} role="region" aria-labelledby={`timeline-btn-${i}`} className="mt-3 cafe-card p-6">
                           <div className="space-y-5">
                             {phase.steps.map((step, si) => (
                               <div key={si} className="flex gap-4">

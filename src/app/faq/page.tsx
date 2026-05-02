@@ -45,6 +45,7 @@ export default function FAQPage() {
           <Search size={20} className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--color-text)] opacity-40" />
           <input
             type="text"
+            aria-label="Search questions"
             placeholder="Search questions..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
@@ -81,6 +82,9 @@ export default function FAQPage() {
             <motion.div key={i} variants={itemVariants} className="cafe-card overflow-hidden">
               <button
                 onClick={() => setExpandedId(expandedId === i ? null : i)}
+                aria-expanded={expandedId === i}
+                aria-controls={`faq-answer-${i}`}
+                id={`faq-question-${i}`}
                 className="w-full flex items-center justify-between p-6 text-left hover:bg-[var(--color-secondary)]/30 transition-colors"
               >
                 <div>
@@ -100,7 +104,7 @@ export default function FAQPage() {
                     transition={{ duration: 0.25 }}
                     className="overflow-hidden"
                   >
-                    <div className="p-6 bg-[var(--color-surface)] border-t border-[var(--cafe-border)]">
+                    <div id={`faq-answer-${i}`} role="region" aria-labelledby={`faq-question-${i}`} className="p-6 bg-[var(--color-surface)] border-t border-[var(--cafe-border)]">
                       <p className="text-[var(--color-text)] opacity-80 leading-relaxed">{faq.answer}</p>
                     </div>
                   </motion.div>

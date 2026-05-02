@@ -24,6 +24,13 @@ const siteUrl =
     ? `https://${process.env.VERCEL_URL}`
     : "http://localhost:3000");
 
+export const viewport: import("next").Viewport = {
+  themeColor: "#5D4432",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {

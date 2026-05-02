@@ -138,7 +138,7 @@ export default function WizardPage() {
             <h2 className="text-2xl font-bold text-[var(--color-primary)]">What is your age?</h2>
             <p className="text-[var(--color-text)] opacity-70">You must be 18 or older to vote.</p>
             <div className="flex gap-3 items-center">
-              <input type="number" min={0} max={150} value={wizard.age} onChange={(e) => update("age", e.target.value)} className="w-28 px-5 py-4 border-2 border-[var(--cafe-border)] rounded-2xl text-xl bg-white text-[var(--color-primary)] font-semibold focus:outline-none focus:border-[var(--color-primary)] transition-colors" placeholder="18" />
+              <input type="number" min={0} max={150} aria-label="Your age" value={wizard.age} onChange={(e) => update("age", e.target.value)} className="w-28 px-5 py-4 border-2 border-[var(--cafe-border)] rounded-2xl text-xl bg-white text-[var(--color-primary)] font-semibold focus:outline-none focus:border-[var(--color-primary)] transition-colors" placeholder="18" />
               <button onClick={() => goTo(2)} disabled={!wizard.age} className="px-8 py-4 bg-[var(--color-primary)] text-white rounded-2xl font-semibold hover:bg-[var(--color-primary)]/90 transition-all disabled:opacity-40 disabled:cursor-not-allowed">Next</button>
             </div>
           </div>

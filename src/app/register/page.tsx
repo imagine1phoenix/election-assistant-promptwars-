@@ -160,6 +160,7 @@ export default function RegisterPage() {
                 type="checkbox"
                 checked={!!checks[item]}
                 onChange={() => toggleCheck(item)}
+                aria-label={`Mark ${item} as completed`}
                 className="mt-1 h-5 w-5 rounded border-gray-300 text-[var(--color-primary)] focus:ring-[var(--color-primary)]"
               />
               <span className={cn("text-[var(--color-text)] transition-colors", checks[item] ? "opacity-50 line-through" : "opacity-80 group-hover:opacity-100")}>{item}</span>
