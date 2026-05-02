@@ -19,7 +19,7 @@ export async function POST(req: Request) {
     }
 
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
     const prompt = `You are a helpful Democracy Assistant for Indian voters. Answer the following query concisely and clearly, keeping the tone supportive and informative: ${message}`;
 
@@ -30,7 +30,7 @@ export async function POST(req: Request) {
   } catch (error: any) {
     console.error("Gemini API Error:", error);
     return NextResponse.json(
-      { error: "Failed to connect to Google Gemini API." },
+      { error: error.message || "Failed to connect to Google Gemini API." },
       { status: 500 }
     );
   }
