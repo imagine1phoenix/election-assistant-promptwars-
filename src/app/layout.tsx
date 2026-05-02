@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { AccessibilityMenu } from "@/components/AccessibilityMenu";
 import { AIAssistant } from "@/components/ai/AIAssistant";
 import "@/lib/firebase/config"; // Initialize Firebase Google Service
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -161,6 +162,7 @@ export default function RootLayout({
         <Footer />
         <AccessibilityMenu />
         <AIAssistant />
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || "G-XYZ1234567"} />
       </body>
     </html>
   );

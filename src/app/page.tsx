@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { ElectionCountdown } from "@/components/ui/ElectionCountdown";
 import { ConstituencyFinder } from "@/components/ui/ConstituencyFinder";
+import { PledgeWall } from "@/features/community/PledgeWall";
 import { ShareButtons } from "@/components/ui/ShareButtons";
 import { VoterBadges } from "@/components/ui/VoterBadges";
 
@@ -192,6 +193,17 @@ export default function Home() {
         className="mb-20"
       >
         <ConstituencyFinder />
+      </motion.div>
+
+      {/* === PLEDGE WALL (FIREBASE) === */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.6 }}
+        className="mb-20"
+      >
+        <PledgeWall />
       </motion.div>
 
       {/* === DEMOCRACY IN NUMBERS === */}
