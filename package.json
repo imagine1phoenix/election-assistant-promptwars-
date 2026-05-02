@@ -24,7 +24,6 @@
     "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
-    "@next/swc-darwin-arm64": "^16.2.4",
     "@tailwindcss/postcss": "^4",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
